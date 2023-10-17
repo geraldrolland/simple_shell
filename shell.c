@@ -102,7 +102,7 @@ int no_input(char *input)
 		token = strtok(NULL, " \n\r\t");
 	}
 	count++;
-	/*free(input);*/
+	free(input);
 	if (count == 1)
 	{
 		return 0;

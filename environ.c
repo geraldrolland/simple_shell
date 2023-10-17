@@ -1,4 +1,5 @@
 #include "main.h"
+<<<<<<< HEAD
 int _setenv(char *variable_name, char *variable_value)
 {
 	int i;
@@ -49,9 +50,17 @@ int _unsetenv(char *variable_name)
 	return 1;
 }
 int env(void)
+=======
+/**
+  * env - enviromental variable
+ *
+ */
+void env(void)
+>>>>>>> 4cbba174815029f43d6c481e0be12c3da8768995
 {
 	int i;
-	for (i=0; environ[i]!=NULL;i++)
+
+	for (i = 0; environ[i] != NULL; i++)
 	{
 		printf("%s\n", environ[i]);
 	}
