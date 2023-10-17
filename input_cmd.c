@@ -2,7 +2,6 @@
 int input_cmd(char *str)
 {
 	char *src="/bin/";
-	int arg_size=token_num(str);
 	char *token=strtok(str, " \n\r\t");
 	char *dup=_strdup(token);
 	char *input =_strcat(src, dup);
@@ -11,11 +10,12 @@ int input_cmd(char *str)
 	free(dup);
 	if (stat(input, &buffer)!=-1)
 	{
-		signal = (_fork(input, token, arg_size));
+		signal = (_fork(input, token, 0));
 		free(str);
 		return signal;
 	}
 	free(input);
+	free(str);
 	return 1;
 }
 char *_strcat(char *src, char *dest)
@@ -40,20 +40,6 @@ char *_strcat(char *src, char *dest)
 		new_str[i]=src[j];
 	}
 	return new_str;
-}
-int token_num(char *str)
-{
-	int i;
-	int size = 0;
-	for (i=0;str[i]!='\0'; i++)
-	{
-		if (str[i]!=' ' && (str[i+1]==' ' || str[i+1]!='\0'))
-		{
-			size++;
-		}
-		continue;     
-	}
-	return size;
 }
 int _fork(char *input, char *token, int arg_size)
 {

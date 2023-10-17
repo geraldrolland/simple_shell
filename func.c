@@ -24,14 +24,44 @@ int _str_len(char *str) {
 	}
 	return len;
 }
-
-/*void write_str(char *str) {
-  write(STDOUT_FILENO, str, _str_len(str));
-  }*/
-void free_mem(char **dptr)
+int environ_cmd(char *input)
 {
-	/*for (int i = 0; dptr[i] != NULL; i++) {
-	  free(dptr[i]);
-	  }*/
-	free(dptr);
+	char *token = strtok(input, " \n\r\t");
+	char *argv[100];
+	int i=0;
+	argv[i]=token;
+	i++;
+	token=strtok(NULL, " \n\r\t");
+	for (; token!=NULL; i++)
+	{
+		argv[i]=token;
+		token=strtok(NULL, " \n\r\t");
+	}
+	argv[i]=NULL;
+	if (_strcmp(argv[0], "env")==0 && argv[1]==NULL)
+	{
+		env();
+		free(input);
+		return 0;
+	}
+	if (_strcmp(argv[0], "setenv")==0 && argv[1]!=NULL && argv[2]!=NULL && argv[3]==NULL)
+	{
+		_setenv(argv[1], argv[2]);
+		free(input);
+		return 0;
+	}
+	if (_strcmp(argv[0], "unsetenv")==0 && argv[1]!=NULL && argv[2]==NULL)
+	{
+		_unsetenv(argv[1]);
+		free(input);
+		return 0;
+	}
+	if (_strcmp(argv[0], "cd") == 0 && (argv[1]==NULL || argv[1]!=NULL) && argv[2]==NULL)
+	{
+		call_cd(argv[1]);
+		free(input);
+		return 0;
+	}
+	free(input);
+	return 1;
 }

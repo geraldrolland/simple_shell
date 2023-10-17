@@ -9,8 +9,7 @@ int compare_path(char *str)
 		return(_fork_proc(str,str1,token));
 	}
 	free(str1);
-	free(str);
-	return 1;
+	return (input_cmd(str));
 }
 int _fork_proc(char *str, char *str1, char *token)
 {
@@ -26,11 +25,12 @@ int _fork_proc(char *str, char *str1, char *token)
 		token =strtok(NULL, " \n\t\r");
 	}
 	argv[i]=NULL;
+	free(str);
 	pid = fork();
+	/*free(str);*/
 	if (pid==-1)
 	{
 		perror("fork");
-		free(str);
 		free(str1);
 		return 1;
 	}
@@ -44,6 +44,5 @@ int _fork_proc(char *str, char *str1, char *token)
 	}
 	wait(NULL);
 	free(str1);
-	free(str);
 	return 0;
 }
