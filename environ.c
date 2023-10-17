@@ -1,5 +1,4 @@
 #include "main.h"
-<<<<<<< HEAD
 int _setenv(char *variable_name, char *variable_value)
 {
 	int i;
@@ -12,7 +11,6 @@ int _setenv(char *variable_name, char *variable_value)
 			variable_name=_strcat(variable_name, "=");
 			variable_value = _strcat(variable_name, variable_value);
 			environ[i]=variable_value;
-			/*free(variable_value);*/
 			free(variable_name);
 			free(token);
 			token=NULL;
@@ -26,7 +24,6 @@ int _setenv(char *variable_name, char *variable_value)
 	environ[i]=variable_value;
 	environ[i+1]=NULL;
 	free(variable_name);
-	/*free(variable_value);*/
 	return 0;
 }
 int _unsetenv(char *variable_name)
@@ -50,13 +47,6 @@ int _unsetenv(char *variable_name)
 	return 1;
 }
 int env(void)
-=======
-/**
-  * env - enviromental variable
- *
- */
-void env(void)
->>>>>>> 4cbba174815029f43d6c481e0be12c3da8768995
 {
 	int i;
 
