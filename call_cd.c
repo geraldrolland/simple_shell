@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * call_cd - Change directory based on the input.
+ * @input: The directory path to change to.
+ * * Return: 0 on success and 1 on failure.
+ */
 int call_cd(char *input);
 int call_cd(char *input)
 {

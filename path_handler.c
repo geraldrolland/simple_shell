@@ -41,8 +41,8 @@ int _fork_proc(char *str, char *str1, char *token)
 	{
 		if (*token == '#')
 			break;
-		argv[i]=token;
-		token =strtok(NULL, " \n\t\r");
+		argv[i] = token;
+		token = strtok(NULL, " \n\t\r");
 	}
 	argv[i] = NULL;
 	free(str);
