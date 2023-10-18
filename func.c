@@ -82,17 +82,20 @@ int environ_cmd(char *input)
 	if (_strcmp(argv[0], "unsetenv") == 0 && argv[1] != NULL
 			&& argv[2] == NULL)
 	{
-		_unsetenv(argv[1]);
+		if (_unsetenv(argv[1]) == 0)
+		{
+			free(input);
+			return (0);
+		}
 		free(input);
-		return (0);
+		return (1);
 	}
-	if (_strcmp(argv[0], "cd") == 0 && (argv[1] == NULL || argv[1] != NULL)
-			&& argv[2] == NULL)
-	{
-		call_cd(argv[1]);
-		free(input);
-		return (0);
-	}
+	if (_strcmp(argv[0], "cd") == 0 && ((argv[1] == NULL || argv[1] != NULL) || argv[2] == NULL))
+		{
+			call_cd(argv[1]);
+			free(input);
+			return (0);
+		}
 	free(input);
 	return (1);
 }
