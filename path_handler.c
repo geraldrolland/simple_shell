@@ -21,6 +21,8 @@ int _fork_proc(char *str, char *str1, char *token)
 	token=strtok(NULL, " \n\t\r");
 	for (; token!=NULL; i++)
 	{
+		if (*token == '#')
+			break;
 		argv[i]=token;
 		token =strtok(NULL, " \n\t\r");
 	}

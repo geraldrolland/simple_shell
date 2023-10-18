@@ -52,6 +52,8 @@ int _fork(char *input, char *token, int arg_size)
 	token=strtok(NULL, " \n\t\r");
 	for (; token!=NULL; i++)
 	{
+		if (*token =='#')
+			break;
 		argv[i]=token;
 		token =strtok(NULL, " \n\t\r");
 	}

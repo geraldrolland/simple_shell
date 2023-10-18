@@ -40,6 +40,7 @@ int _unsetenv(char *variable_name)
 			{
 				environ[i]=environ[i+1];
 			}
+			/*printf("error");*/
 			return 0;
 		}
 		free(token);
