@@ -15,7 +15,7 @@ int input_cmd(char *str)
 		return signal;
 	}
 	free(input);
-	free(str);
+	/*free(str);*/
 	return 1;
 }
 char *_strcat(char *src, char *dest)
@@ -41,6 +41,20 @@ char *_strcat(char *src, char *dest)
 	}
 	return new_str;
 }
+int token_num(char *str)
+{
+	int i;
+	int size = 0;
+	for (i=0;str[i]!='\0'; i++)
+	{
+		if (str[i]!=' ' && (str[i+1]==' ' || str[i+1]!='\0'))
+		{
+			size++;
+		}
+		continue;     
+	}
+	return size;
+}
 int _fork(char *input, char *token, int arg_size)
 {
 	pid_t pid = 0;
@@ -52,8 +66,6 @@ int _fork(char *input, char *token, int arg_size)
 	token=strtok(NULL, " \n\t\r");
 	for (; token!=NULL; i++)
 	{
-		if (*token =='#')
-			break;
 		argv[i]=token;
 		token =strtok(NULL, " \n\t\r");
 	}
