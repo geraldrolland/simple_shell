@@ -29,11 +29,12 @@ int main(void)
 		if (_strcmp(tok, "exit\n") == 0)
 		{
 			free(input);
-			free(input_copy3);
+			/*free(input_copy3);*/
 			free(input_copy2);
-			break;
+			_exit_status(input_copy3);
+			/*break;*/
 		}
-		if (no_input(input_copy2) == 0)
+		if (*tok == '#' || no_input(input_copy2) == 0)
 		{
 			free(input_copy3);
 			continue;
