@@ -3,7 +3,7 @@ int no_input(char *input);
 int handle_cmd(char *input_copy3, char *input_copy);
 
 /**
- * main - The main function.
+ * main - the main function.
  *
  * Return: Always 0.
  */
